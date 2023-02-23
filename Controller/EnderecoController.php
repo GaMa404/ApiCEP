@@ -14,7 +14,7 @@ class EnderecoController extends Controller{
     {
     }
 
-    public static function getLogradrouroByCep() : void
+    public static function getLogradouroByCep() : void
     {
     }
 
@@ -22,7 +22,7 @@ class EnderecoController extends Controller{
     {
     }
 
-    public static function getCidadesByUd() : void
+    public static function getCidadesByUf() : void
     {
     }
 }

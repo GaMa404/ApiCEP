@@ -27,11 +27,9 @@ class EnderecoController extends Controller{
     {
         try
         {
-            $bairro = parent::getStringFromUrl(
-                isset($_GET['bairro']) ? $_GET['bairro'] : null, 'bairro');
+            $bairro = parent::getStringFromUrl(isset($_GET['bairro']) ? $_GET['bairro'] : null, 'bairro');
             
-                $id_cidade = parent::getIntFromUrl(
-                    isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null, 'cep');
+            $id_cidade = parent::getIntFromUrl(isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null, 'cep');
                 
             $model = new EnderecoModel();
 
@@ -86,7 +84,7 @@ class EnderecoController extends Controller{
             $uf = $_GET['uf'];
 
             $model = new CidadeModel();
-            $model->getCidadeByUf();
+            $model->getCidadesByUf($uf);
 
             parent::getResponseAsJSON($model->rows);
         }

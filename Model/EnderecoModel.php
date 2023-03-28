@@ -30,7 +30,7 @@ class EnderecoModel extends Model
         {
             $dao = new EnderecoDAO();
 
-            return $dao->selectByCep($cep);
+            return $dao->selectLogradouroByCep($cep);
         }
         catch(Exception $e)
         {

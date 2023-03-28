@@ -11,7 +11,7 @@ class EnderecoDAO extends DAO
         parent::__construct();
     }
 
-    public function selectByCep(int $cep)
+    public function selectLogradouroByCep(int $cep)
     {
         $sql = "SELECT * FROM logradouro WHERE cep = ?";
 
@@ -19,7 +19,7 @@ class EnderecoDAO extends DAO
         $stmt->bindValue(1, $cep);
         $stmt->execute();
 
-        $endereco_obj = $stmt->fetchObject("App\Model\EnderecoModel");
+        $endereco_obj = $stmt->fetchObject("ApiCep\Model\EnderecoModel");
         $endereco_obj->arr_cidades = $this->selectCidadesByUF($endereco_obj->UF);
 
         return $endereco_obj;
@@ -64,9 +64,11 @@ class EnderecoDAO extends DAO
 
     public function selectCepByLogradouro($logradouro)
     {
-        $sql = "SELECT * FROM logradouro WHERE descricao_sem_numero";
+        $sql = "SELECT * FROM logradouro WHERE descricao_sem_numero LIKE :q";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute([':q' => "%" . $logradouro . "%"]);
+
+        return $stmt->fetchAll(DAO::FETCH_CLASS);
     }
 }

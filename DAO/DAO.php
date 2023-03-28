@@ -17,7 +17,7 @@ abstract class DAO extends PDO
             $options = 
             [
                 PDO::ATTR_AUTOCOMMIT => PDO::ERRMODE_EXCEPTION,
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET BANES utf8'
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
             ];
 
             $dsn = "mysql:host=" . $_ENV['db']['host'] . ";dbname=" . $_ENV['db']['database'];
